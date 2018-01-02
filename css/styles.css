@@ -1,0 +1,62 @@
+.resultat{
+
+	height: 110px;
+	width: 300px;
+	background: radial-gradient(circle, #fff 20%, #ccc);
+	border:1px solid;
+	border-radius: 10px;
+	margin: 20px auto;
+	font-size: 50px;
+	text-align: right;
+	overflow: hidden;
+	font-family: 'Open Sans Condensed', sans-serif;
+
+
+}
+
+.chiffres div{
+
+	display: inline-block;
+	padding: 5px;
+	margin-top: 1rem;
+	margin-left: 10px;
+}
+.chiffres button{
+
+	height: 80px;
+	width: 80px;
+	border:1px solid transparent;
+	border-radius: 50%;
+	background-color: rgb(128, 128, 128);
+	font-family: 'Open Sans Condensed', sans-serif;
+
+	color: white;
+	font-size: 40px;
+	font-weight: bolder;
+	text-align: center;
+	margin: 0 5px;
+}
+
+
+.chiffres .operants{
+
+	background-color: rgb(233, 150, 122);
+	margin-left: 20px;
+}
+
+.chiffres .egal{
+
+	background-color: rgb(205, 92, 92);
+}
+
+.calculatrice{
+
+	background-color: #494949;
+	height: 660px;
+	width: 450px;
+	border: 1px solid;
+	border-radius: 20px;
+	margin: auto;
+
+}
+

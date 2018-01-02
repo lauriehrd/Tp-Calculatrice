@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tp-Calculatrice simple</title>	
+	<link href="css/styles.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+</head>
+<body>
+	<section class="calculatrice">
+		<div id="result" class="resultat">
+			
+		</div>
+		<div class="chiffres">
+			<div>
+				<button value="7" id="sept">7</button>
+				<button value="8" id="huit">8</button>
+				<button value="9" id="neuf">9</button>
+				<button id="division" class="operants">/</button>	
+			</div>
+			<div>
+				<button value="4" id="quatre" o>4</button>
+				<button value="5" id="cinq">5</button>
+				<button value="6" id="six">6</button>	
+				<button id="fois" class="operants">x</button>
+			</div>
+			<div>
+				<button value="1" id="un">1</button>
+				<button value="2" id="deux">2</button>
+				<button value="3" id="trois">3</button>	
+				<button id="moins" class="operants">-</button>
+			</div>
+			<div class="last_ligne">
+				<button value="0" id="zero" class="case_long">0</button>
+				<button value="." id="virgule">.</button>	
+				<button id="egal" class="egal">=</button>
+				<button id="plus" class="operants">+</button>			
+			</div>
+		</div>
+	</section>
+<script>
+
+	var keys = document.querySelectorAll('button');
+	var operators = ['+', '-', 'x', '÷'];
+	var decimal = false;
+
+
+for(var i = 0; i < keys.length; i++) {
+	keys[i].onclick = function(e) {
+
+		var resultat = document.querySelector('#result');
+		var resultatVal = resultat.innerHTML;
+		var btnVal = this.innerHTML;
+
+		if(btnVal == 'C') {
+			resultat.innerHTML = '';
+			decimal =false;
+
+		}
+		
+		else if(btnVal == '=') {
+			var equation = resultatVal;
+			var lastChar = equation[equation.length - 1];
+	
+			equation = equation.replace(/x/g, '*').replace(/÷/g, '/');
+
+			if(operators.indexOf(lastChar) > -1 || lastChar == '.')
+				equation = equation.replace(/.$/, '');
+			
+			if(equation)
+				resultat.innerHTML = eval(equation);
+				
+							decimal =false;
+
+		}
+
+		else if(operators.indexOf(btnVal) > -1) {
+
+			var lastChar = resultatVal[resultatVal.length - 1];
+
+			if(resultatVal != '' && operators.indexOf(lastChar) == -1) 
+				resultat.innerHTML += btnVal;
+
+			else if(resultatVal == '' && btnVal == '-') 
+				resultat.innerHTML += btnVal;
+
+			if(operators.indexOf(lastChar) > -1 && resultatVal.length > 1) {
+
+				resultat.innerHTML = resultatVal.replace(/.$/, btnVal);
+			}
+			
+			decimal =false;
+		}
+		
+		else if(btnVal == '.') {
+			if(!decimal) {
+				resultat.innerHTML += btnVal;
+				decimal = true;
+			}
+		}
+
+		else {
+			resultat.innerHTML += btnVal;
+		}
+
+		e.preventDefault();
+	} 
+}
+
+
+</script>	
+</body>
+</html>
